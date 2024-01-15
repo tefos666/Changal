@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Changal.Infra;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -75,10 +76,20 @@ namespace Endpoint.Win
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
+
+            ILog log = new SaveToFile();
+            log.Log("Login OK |  1402~10~25  | Admin ");
             this.Hide();
             FrmMain frm = new FrmMain();
             frm.ShowDialog();
-          
+
+
+
+            /*
+            this.SetTopLevel=true;
+            this.HasChildren = true;
+            this.Parent = ....;
+            */
         }
     }
 }
