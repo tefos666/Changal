@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Endpoint.Win.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,6 +19,7 @@ namespace Endpoint.Win
             InitializeComponent();
             this.FormTitle = "چنگال [فرم اصلی]";
             this.WindowState = FormWindowState.Maximized;
+
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
@@ -28,6 +30,26 @@ namespace Endpoint.Win
         private void lblSignOut_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void PbFoodMenu_MouseHover(object sender, EventArgs e)
+        {
+            PbSelected.Image = Resources.selected_back2;
+        }
+
+        private void PbFoodMenu_MouseLeave(object sender, EventArgs e)
+        {
+            PbSelected.Image = Resources.selected_back;
+        }
+
+        private void lblFoodMenu_MouseHover(object sender, EventArgs e)
+        {
+            PbSelected.Image = Resources.selected_back2;
+        }
+
+        private void lblFoodMenu_MouseLeave(object sender, EventArgs e)
+        {
+            PbSelected.Image = Resources.selected_back;
         }
     }
 }

@@ -39,6 +39,7 @@
             SectionBasicInfo = new Panel();
             lblFoodMenu = new LinkLabel();
             PbFoodMenu = new PictureBox();
+            PbSelected = new PictureBox();
             SectionHeaderBasicInfo = new PictureBox();
             SectionSignOut = new Panel();
             lblSignOut = new LinkLabel();
@@ -51,6 +52,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SectionBasicInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PbFoodMenu).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PbSelected).BeginInit();
             ((System.ComponentModel.ISupportInitialize)SectionHeaderBasicInfo).BeginInit();
             SectionSignOut.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PbSignOut).BeginInit();
@@ -72,7 +74,7 @@
             RibbonBar.Dock = DockStyle.Left;
             RibbonBar.Location = new Point(0, 43);
             RibbonBar.Name = "RibbonBar";
-            RibbonBar.Size = new Size(216, 709);
+            RibbonBar.Size = new Size(210, 709);
             RibbonBar.TabIndex = 1;
             // 
             // lblBasicInfoHeader
@@ -106,7 +108,7 @@
             SectionPayment.Dock = DockStyle.Top;
             SectionPayment.Location = new Point(0, 213);
             SectionPayment.Name = "SectionPayment";
-            SectionPayment.Size = new Size(216, 49);
+            SectionPayment.Size = new Size(210, 49);
             SectionPayment.TabIndex = 16;
             // 
             // lblPayment
@@ -136,7 +138,7 @@
             pictureBox1.Dock = DockStyle.Top;
             pictureBox1.Location = new Point(0, 183);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(216, 30);
+            pictureBox1.Size = new Size(210, 30);
             pictureBox1.TabIndex = 15;
             pictureBox1.TabStop = false;
             // 
@@ -144,32 +146,49 @@
             // 
             SectionBasicInfo.Controls.Add(lblFoodMenu);
             SectionBasicInfo.Controls.Add(PbFoodMenu);
+            SectionBasicInfo.Controls.Add(PbSelected);
             SectionBasicInfo.Dock = DockStyle.Top;
             SectionBasicInfo.Location = new Point(0, 127);
             SectionBasicInfo.Name = "SectionBasicInfo";
-            SectionBasicInfo.Size = new Size(216, 56);
+            SectionBasicInfo.Size = new Size(210, 56);
             SectionBasicInfo.TabIndex = 13;
             // 
             // lblFoodMenu
             // 
             lblFoodMenu.AutoSize = true;
-            lblFoodMenu.Location = new Point(55, 19);
+            lblFoodMenu.BackColor = Color.White;
+            lblFoodMenu.Location = new Point(41, 16);
             lblFoodMenu.Name = "lblFoodMenu";
             lblFoodMenu.Size = new Size(85, 25);
-            lblFoodMenu.TabIndex = 13;
+            lblFoodMenu.TabIndex = 16;
             lblFoodMenu.TabStop = true;
             lblFoodMenu.Text = "لیست غذاها";
+            lblFoodMenu.MouseLeave += lblFoodMenu_MouseLeave;
+            lblFoodMenu.MouseHover += lblFoodMenu_MouseHover;
             // 
             // PbFoodMenu
             // 
+            PbFoodMenu.BackColor = Color.White;
             PbFoodMenu.BackgroundImageLayout = ImageLayout.Stretch;
             PbFoodMenu.Image = (Image)resources.GetObject("PbFoodMenu.Image");
-            PbFoodMenu.Location = new Point(147, 3);
+            PbFoodMenu.Location = new Point(132, 8);
             PbFoodMenu.Name = "PbFoodMenu";
-            PbFoodMenu.Size = new Size(39, 41);
+            PbFoodMenu.Size = new Size(39, 40);
             PbFoodMenu.SizeMode = PictureBoxSizeMode.StretchImage;
-            PbFoodMenu.TabIndex = 12;
+            PbFoodMenu.TabIndex = 15;
             PbFoodMenu.TabStop = false;
+            PbFoodMenu.MouseLeave += PbFoodMenu_MouseLeave;
+            PbFoodMenu.MouseHover += PbFoodMenu_MouseHover;
+            // 
+            // PbSelected
+            // 
+            PbSelected.Dock = DockStyle.Top;
+            PbSelected.Image = Properties.Resources.selected_back;
+            PbSelected.Location = new Point(0, 0);
+            PbSelected.Name = "PbSelected";
+            PbSelected.Size = new Size(210, 56);
+            PbSelected.TabIndex = 14;
+            PbSelected.TabStop = false;
             // 
             // SectionHeaderBasicInfo
             // 
@@ -177,7 +196,7 @@
             SectionHeaderBasicInfo.Dock = DockStyle.Top;
             SectionHeaderBasicInfo.Location = new Point(0, 97);
             SectionHeaderBasicInfo.Name = "SectionHeaderBasicInfo";
-            SectionHeaderBasicInfo.Size = new Size(216, 30);
+            SectionHeaderBasicInfo.Size = new Size(210, 30);
             SectionHeaderBasicInfo.TabIndex = 11;
             SectionHeaderBasicInfo.TabStop = false;
             // 
@@ -188,7 +207,7 @@
             SectionSignOut.Dock = DockStyle.Bottom;
             SectionSignOut.Location = new Point(0, 660);
             SectionSignOut.Name = "SectionSignOut";
-            SectionSignOut.Size = new Size(216, 49);
+            SectionSignOut.Size = new Size(210, 49);
             SectionSignOut.TabIndex = 8;
             // 
             // lblSignOut
@@ -221,7 +240,7 @@
             Logo.Location = new Point(0, 0);
             Logo.Margin = new Padding(3, 5, 3, 5);
             Logo.Name = "Logo";
-            Logo.Size = new Size(216, 97);
+            Logo.Size = new Size(210, 97);
             Logo.SizeMode = PictureBoxSizeMode.StretchImage;
             Logo.TabIndex = 4;
             Logo.TabStop = false;
@@ -232,9 +251,9 @@
             Content.BackgroundImageLayout = ImageLayout.Stretch;
             Content.BorderStyle = BorderStyle.FixedSingle;
             Content.Dock = DockStyle.Fill;
-            Content.Location = new Point(216, 43);
+            Content.Location = new Point(210, 43);
             Content.Name = "Content";
-            Content.Size = new Size(856, 709);
+            Content.Size = new Size(862, 709);
             Content.TabIndex = 3;
             // 
             // FrmMain
@@ -259,6 +278,7 @@
             SectionBasicInfo.ResumeLayout(false);
             SectionBasicInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)PbFoodMenu).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PbSelected).EndInit();
             ((System.ComponentModel.ISupportInitialize)SectionHeaderBasicInfo).EndInit();
             SectionSignOut.ResumeLayout(false);
             SectionSignOut.PerformLayout();
@@ -276,8 +296,6 @@
         private PictureBox PbSignOut;
         private PictureBox SectionHeaderBasicInfo;
         private Panel SectionBasicInfo;
-        private LinkLabel lblFoodMenu;
-        private PictureBox PbFoodMenu;
         private Panel SectionPayment;
         private LinkLabel lblPayment;
         private PictureBox PbPayment;
@@ -285,5 +303,8 @@
         private Label lblBasicInfoHeader;
         private Label label1;
         private PictureBox Logo;
+        private LinkLabel lblFoodMenu;
+        private PictureBox PbFoodMenu;
+        private PictureBox PbSelected;
     }
 }
